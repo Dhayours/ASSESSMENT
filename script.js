@@ -8,10 +8,15 @@ function calculate() {
   try {
     let result = eval(
       currentExpression
-        .replace("×", "*")
-        .replace("÷", "/")
-        .replace("^", "**")
-        .replace("%", "/100")
+        .replace(/×/g, "*")
+        .replace(/÷/g, "/")
+        .replace(/\^/g, "**")
+        .replace(/%/g, "/100")
+        .replace(/--/g, "+") // handle consecutive minus operators
+        .replace(/\+\-/g, "-") // handle plus-minus operators
+        .replace(/-\+/g, "-") // handle minus-plus operators
+        .replace(/\*\+/g, "*") // handle multiplication with plus
+        .replace(/\/\+/g, "/") // handle division with plus
     );
     history.push(`${currentExpression} = ${result}`);
     historyLog.innerHTML = history.map((item) => `<p>${item}</p>`).join("");
