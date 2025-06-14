@@ -112,17 +112,22 @@ button {
 }
 
 .h3-history {
-  margin-top: -10px;
+  margin-top: 10px;
   font-size: 18px;
   text-align: center;
 }
 
 #history-log {
-  padding: 10px;
+  padding: 0px;
   overflow-y: auto;
-  max-height: 100px;
   display: flex;
   flex-direction: column-reverse;
+}
+
+#history-log p {
+  margin-bottom: 5px; /* reduce the margin */
+  padding: 0; /* remove padding */
+  line-height: 0.1; /* adjust line height */
 }
 
 button:hover {
